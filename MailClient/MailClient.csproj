@@ -78,32 +78,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddMailToList.xaml.cs">
+    <Compile Include="Source\LocalBox\AddMailToAccount.cs" />
+    <Compile Include="Source\LocalBox\CreateAccount.cs" />
+    <Compile Include="Source\LocalBox\EnterToAccount.cs" />
+    <Compile Include="Source\MailBox\LoadBoxes.cs" />
+    <Compile Include="Source\Operations\GetMailSuffix.cs" />
+    <Compile Include="Source\Views\AddMailToList.xaml.cs">
       <DependentUpon>AddMailToList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChooseMail.xaml.cs">
+    <Compile Include="Source\Views\ChooseMail.xaml.cs">
       <DependentUpon>ChooseMail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Crypto.cs" />
-    <Compile Include="MessageView.xaml.cs">
+    <Compile Include="Source\Encrypt\Crypto.cs" />
+    <Compile Include="Source\Views\MessageView.xaml.cs">
       <DependentUpon>MessageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyItem.cs" />
-    <Compile Include="SentMessage.xaml.cs">
+    <Compile Include="Source\LetterConstruction\LetterConstruction.cs" />
+    <Compile Include="Source\Views\SentMessage.xaml.cs">
       <DependentUpon>SentMessage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StartWindow.xaml.cs">
+    <Compile Include="Source\Views\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddMailToList.xaml">
+    <Page Include="Source\Views\AddMailToList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChooseMail.xaml">
+    <Page Include="Source\Views\ChooseMail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Source\Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -111,19 +116,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Source\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MessageView.xaml">
+    <Page Include="Source\Views\MessageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SentMessage.xaml">
+    <Page Include="Source\Views\SentMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StartWindow.xaml">
+    <Page Include="Source\Views\StartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,5 +160,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,195 @@
+﻿<Window x:Class="MailClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+        xmlns:materialDesignColors="clr-namespace:MaterialDesignColors;assembly=MaterialDesignColors"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        xmlns:local="clr-namespace:MailClient"
+        Title="MainWindow" Height="575.8" Width="940.6" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" BorderBrush="#FFCD0707" BorderThickness="1">
+    <Grid>
+        <materialDesign:ColorZone
+  Mode="Accent"
+  Padding="16" Height="50">
+            <DockPanel Margin="-8,0,0,0">
+                <StackPanel
+      Orientation="Horizontal" Width="1117" Margin="-200,-9,0,-8.4">
+                    <materialDesign:PackIcon Kind="MailOutline" Height="29" Width="32" Margin="200,3,0,0" />
+                    <TextBlock
+        VerticalAlignment="Center"
+        Margin="15,6,0,-0.6" Width="185" Height="29" FontFamily="Palatino Linotype" FontSize="18"><Run Text="Encrypted Mail Client"/></TextBlock>
+                    <TextBlock
+        VerticalAlignment="Bottom"
+        Margin="480,0,0,7.4" Width="130" Height="20" 
+        FontFamily="Palatino Linotype" 
+        FontSize="16" Cursor="Hand" 
+        MouseDown="TextBlock_MouseDown_1">
+        <Run Text="Сменить аккаунт"/></TextBlock>
+                    <TextBlock
+        VerticalAlignment="Center"
+        Margin="20,8,0,6.4" Width="50" Height="20" FontFamily="Palatino Linotype" FontSize="16" Cursor="Hand" MouseDown="TextBlock_MouseDown"><Run Text="Выход"/></TextBlock>
+                    <TextBlock
+        VerticalAlignment="Bottom"
+        Margin="-550,0,0,7" Width="115" Height="20" 
+        FontFamily="Palatino Linotype" 
+        FontSize="16" Cursor="Hand" MouseDown="TextBlock_MouseDown_2">
+        <Run Text="Сменить ящик"/></TextBlock>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+        <materialDesign:Chip x:Name="Chip"
+  Content="pi.16b.alex@gmail.com" Foreground="White"
+  Icon="P" Margin="263,10,0,532.4" Width="212" FontFamily="Palatino Linotype" FontSize="16" />
+
+        <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Height="Auto"
+    materialDesign:ButtonAssist.CornerRadius="15"
+            Margin="10,63,699.2,457.4" Background="White" 
+            Foreground="Black" BorderBrush="Red" FontFamily="Palatino Linotype" FontSize="18" Click="Button_Click">
+            <TextBlock
+      Text="Написать письмо" Margin="0,0,0,1" FontSize="18" />
+        </Button>
+
+        <ListView x:Name="MSList" SelectionMode="Multiple"
+            Margin="245,110,10,10" BorderBrush="#89FF0000" FontFamily="Palatino Linotype" FontSize="18" MouseDoubleClick="MSList_MouseDoubleClick">
+            <ListView.View>
+                <GridView x:Name="MSGrid">
+                    <GridViewColumn Header="" x:Name="boxes" Width="30">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Width="25" Height="25" 
+                                IsChecked="{Binding RelativeSource={RelativeSource 
+                                    AncestorType=ListBoxItem}, Path=IsSelected, Mode=TwoWay}"
+                                x:Name="checkMail"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="Who"
+        DisplayMemberBinding="{Binding Name}"
+        Header="Отправитель" Width="170" />
+                    <GridViewColumn x:Name="What"
+        DisplayMemberBinding="{Binding Description}"
+        Header="Тема" Width="280" />
+                    <GridViewColumn x:Name="Date"
+        DisplayMemberBinding="{Binding Date}"
+        Header="Дата" Width="160" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel
+  Orientation="Vertical"
+  Margin="10,125,699.2,80.4">
+            <RadioButton x:Name="M1"
+    Style="{StaticResource MaterialDesignTabRadioButton}"
+    Margin="4"
+    IsChecked="True"
+    Content="Входящие" FontFamily="Palatino Linotype" FontSize="18" 
+    Cursor="Hand" Checked="RadioButton_Checked" />
+            <RadioButton x:Name="M2"
+    Style="{StaticResource MaterialDesignTabRadioButton}"
+    Margin="4"
+    IsChecked="False"
+    Content="Исходящие" FontFamily="Palatino Linotype" FontSize="18" Cursor="Hand" Checked="RadioButton_Checked_1" />
+            <RadioButton x:Name="M3"
+    Style="{StaticResource MaterialDesignTabRadioButton}"
+    Margin="4"
+    IsChecked="False"
+    Content="Спам" FontFamily="Palatino Linotype" FontSize="18" Cursor="Hand" Checked="RadioButton_Checked_3" >
+            </RadioButton>
+            <RadioButton x:Name="M4"
+    Style="{StaticResource MaterialDesignTabRadioButton}"
+    Margin="4"
+    IsChecked="False"
+    Content="Корзина" FontFamily="Palatino Linotype" FontSize="18" Cursor="Hand" Checked="RadioButton_Checked_2" />
+        </StackPanel>
+
+        <Button x:Name="renew"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="270,63,631.2,473.4" Width="38" Height="38" Click="renew_Click">
+            <materialDesign:PackIcon
+            Kind="Autorenew" RenderTransformOrigin="0.5,0.5" >
+                <materialDesign:PackIcon.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="18.35"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </materialDesign:PackIcon.RenderTransform>
+            </materialDesign:PackIcon>
+        </Button>
+
+        <Button x:Name="deleteMS"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="325,63,576.2,473.4" Width="38" Height="38" Click="deleteMS_Click">
+            <materialDesign:PackIcon
+            Kind="Delete" RenderTransformOrigin="0.5,0.5" >
+            </materialDesign:PackIcon>
+        </Button>
+
+        <Button x:Name="deleteAll"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="891,63,10.2,473.4" Width="38" Height="38" Foreground="Black" Click="deleteAll_Click">
+            <materialDesign:PackIcon
+            Kind="EmailWarning" Width="28" Height="28">
+            </materialDesign:PackIcon>
+        </Button>
+
+
+        <Button x:Name="to_faw"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="382,63,519.2,473.4" Width="38" Height="38" Click="to_faw_Click">
+            <materialDesign:PackIcon
+            Kind="EmailOpenMultiple" RenderTransformOrigin="0.5,0.5" >
+            </materialDesign:PackIcon>
+        </Button>
+
+        <Button x:Name="LPage"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Height="Auto"
+    materialDesign:ButtonAssist.CornerRadius="15"
+            Margin="8,524,839.2,10.4" Background="White" 
+            Foreground="Black" BorderBrush="#FFD50000" FontFamily="Palatino Linotype" FontSize="12" Click="LPage_Click" IsEnabled="False" Width="90">
+            <TextBlock
+      Text=">>>" Margin="0,0,0,1" RenderTransformOrigin="0.5,0.5" >
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Button>
+
+        <Button x:Name="NPage"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Height="Auto"
+    materialDesign:ButtonAssist.CornerRadius="15"
+            Margin="150,524,699.2,10.4" Background="White" 
+            Foreground="Black" BorderBrush="#FFD50000" FontFamily="Palatino Linotype" FontSize="12" Click="NPage_Click">
+            <TextBlock
+      Text=">>>" Margin="0,0,0,1" />
+        </Button>
+
+        <Button x:Name="IPage"
+    Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+            Margin="104,523,795.2,11.4" BorderBrush="#FFD50000" 
+            Background="White" Foreground="#DD000000" 
+            Content="1" FontFamily="Palatino Linotype" FontSize="14" Cursor="Arrow"/>
+
+        <Label FontFamily="Palatino Linotype" 
+               FontSize="16" 
+               Foreground="#FFD50000"
+               x:Name="number" 
+               Margin="200,117,631,291">
+            0
+        </Label>
+
+    </Grid>
+</Window>

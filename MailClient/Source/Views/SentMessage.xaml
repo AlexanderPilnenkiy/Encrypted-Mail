@@ -1,0 +1,139 @@
+﻿<Window x:Class="MailClient.SentMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailClient"
+        xmlns:materialDesignColors="clr-namespace:MaterialDesignColors;assembly=MaterialDesignColors"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="SentMessage" Height="489" Width="489"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" BorderBrush="#FFD50000" BorderThickness="1">
+    <Grid>
+        <materialDesign:ColorZone
+  Mode="Accent"
+  Padding="16" Height="50">
+            <DockPanel Margin="-8,0,-15,0">
+                <StackPanel
+      Orientation="Horizontal" Width="497" Margin="0,-9,0,-8">
+                    <materialDesign:PackIcon Kind="MailOutline" Height="29" Width="32" Margin="0,2,0,0" />
+                    <TextBlock
+        VerticalAlignment="Center"
+        Margin="5,6,0,-0.6" Width="165" Height="29" FontFamily="Times New Roman" FontSize="18"><Run Text="Encrypted Mail Client"/></TextBlock>
+                    <TextBlock
+        VerticalAlignment="Center"
+        Margin="210,8,0,7" Width="65" Height="20" FontFamily="Times New Roman" FontSize="18" Cursor="Hand" MouseDown="TextBlock_MouseDown"><Run Text="Закрыть"/></TextBlock>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+        <TextBox x:Name="to" Text="labatri@yandex.ru"
+  materialDesign:HintAssist.Hint="Кому"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+            Margin="20,70,227,371" SelectionBrush="DarkGray" 
+                materialDesign:HintAssist.Foreground="DarkGray"
+  materialDesign:TextFieldAssist.UnderlineBrush="DarkGray"
+            CaretBrush="DarkGray" FontFamily="Times New Roman" FontSize="18" />
+
+        <TextBox x:Name="theme" Text=""
+  materialDesign:HintAssist.Hint="Тема"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+            Margin="20,115,227,326" SelectionBrush="DarkGray" 
+                materialDesign:HintAssist.Foreground="DarkGray"
+  materialDesign:TextFieldAssist.UnderlineBrush="DarkGray"
+            CaretBrush="DarkGray" FontFamily="Times New Roman" FontSize="18" />
+
+        <TextBox x:Name="SentText"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            materialDesign:HintAssist.Hint="Текст письма"
+    Margin="20,180,81,75"
+    AcceptsReturn="True"
+    TextWrapping="Wrap" BorderThickness="1"
+    VerticalScrollBarVisibility="Auto" BorderBrush="DarkGray" 
+            CaretBrush="DarkGray" FontFamily="Times New Roman" FontSize="18"/>
+
+        <TextBox x:Name="keyY" Text="PFJTQUtleVZhbHVlPjxNb2R1bHVzPjJFRnFiYXBRY2k0UUV5by91aThQcjlNeTYzUlZ3djZ1S2lHUG9nUnRDSDdUZjNvK1R2QjZmcmFkVG5Oa2x0Zk03OWI3dDkwQ0JyTHorcnF6V3h5ZTJVMlluZ1dXbWh4VVYvMldqenl5RE9rZjFIbXVKdVZiSCs5Qlp6K2dTVlluMTh0aEw1T0Y2TEVvcE1zd05FNUo0Q2RtY054NmRicE10Ky9tZUZNVTl4NWNUem9sWDNSTkpoWENJclluWEE0bENNckxhdXN6OFExODBGR3pDZzBzZDdpUG9nc216WmNvM1l2eWF4UldsS2l2bENhU2d3eXF6N244Si9xVXVuNnBCVFp1MFh2dG5hSzJNb1RORm0zRXZuS0RqbHU2aGFVeUwyNDRWWXdObEhoTlhsMFBKUkpkVUhvZVcvU2ZzZ3BqbGxmdHZ1N3hnTXJ1WTBRanNNdDRRUT09PC9Nb2R1bHVzPjxFeHBvbmVudD5BUUFCPC9FeHBvbmVudD48L1JTQUtleVZhbHVlPg=="
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            materialDesign:HintAssist.Hint="Публичный ключ получателя"
+    Margin="20,417,81,10"
+    AcceptsReturn="True"
+    TextWrapping="Wrap" BorderThickness="1"
+    VerticalScrollBarVisibility="Auto" BorderBrush="DarkGray" 
+            CaretBrush="DarkGray" FontFamily="Times New Roman" FontSize="16"/>
+
+        <Button x:Name="Attach"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="423,236,15,202" Width="Auto" Height="49" Click="Attach_Click">
+            <materialDesign:PackIcon
+            Kind="Attachment" RenderTransformOrigin="0.5,0.5" Height="34" Width="36" >
+                <materialDesign:PackIcon.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-61.91"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </materialDesign:PackIcon.RenderTransform>
+            </materialDesign:PackIcon>
+        </Button>
+
+        <Button x:Name="fontP"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="423,290,15,148" Width="Auto" Height="49" Click="fontP_Click">
+            <materialDesign:PackIcon
+            Kind="FormatFontSizeIncrease" RenderTransformOrigin="0.5,0.5" Height="30" Width="30" >
+            </materialDesign:PackIcon>
+        </Button>
+
+        <Button x:Name="fontM"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="423,344,15,94" Width="Auto" Height="49" Click="fontM_Click">
+            <materialDesign:PackIcon
+            Kind="FormatFontSizeDecrease" RenderTransformOrigin="0.5,0.5" Height="30" Width="30" >
+            </materialDesign:PackIcon>
+        </Button>
+
+        <Button x:Name="Send"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="423,423,15,15" Width="Auto" Height="49" Click="Send_Click">
+            <materialDesign:PackIcon
+            Kind="Send" RenderTransformOrigin="0.5,0.5" Height="30" Width="30" >
+            </materialDesign:PackIcon>
+        </Button>
+
+        <Button x:Name="SendL"
+             Style="{StaticResource MaterialDesignIconForegroundButton}"
+             Margin="423,423,15,15" Width="Auto" Height="49" Click="fontM_Click" IsEnabled="False">
+            <materialDesign:PackIcon
+            Kind="SendLock" RenderTransformOrigin="0.5,0.5" Height="30" Width="30" >
+            </materialDesign:PackIcon>
+        </Button>
+
+        <materialDesign:Card
+  Background="{DynamicResource MaterialDesignBackground}" Margin="275,67,10,0">
+            <StackPanel>
+                <Expander
+      HorizontalAlignment="Stretch"
+      Header="Вложения" FontFamily="Times New Roman" FontSize="18">
+                    <StackPanel
+        Orientation="Vertical"
+        TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+        Margin="24,8,24,16">
+                        <ListView x:Name="attachment" MouseDoubleClick="attachment_MouseDoubleClick" FontSize="11"/>
+                    </StackPanel>
+                </Expander>
+                <Border
+      Background="{DynamicResource MaterialDesignDivider}"
+      Height="1"
+      HorizontalAlignment="Stretch"
+      SnapsToDevicePixels="True" />
+            </StackPanel>
+        </materialDesign:Card>
+
+        <Label Margin="447,225,10,235" 
+               FontFamily="Palatino Linotype" 
+               FontSize="16" Foreground="#FFD50000"
+               x:Name="number">0</Label>
+    </Grid>
+</Window>
